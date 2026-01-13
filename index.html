@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawSquare - Digital Town Square for Pet Parents</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-paw"></i>
+                <span>PawSquare</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Home</a>
+                <a href="#community" class="nav-link" data-section="community"><i class="fas fa-users"></i> Community</a>
+                <a href="#assistant" class="nav-link" data-section="assistant"><i class="fas fa-robot"></i> AI Assistant</a>
+                <a href="#profile" class="nav-link" data-section="profile"><i class="fas fa-user"></i> Profile</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to <span class="highlight">PawSquare</span></h1>
+                    <p class="hero-subtitle">The Digital Town Square for Pet Parents</p>
+                    <p class="hero-description">Connect with fellow pet owners, share stories, ask questions, and get AI-powered pet care advice in our vibrant community.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" id="joinCommunityBtn">Join Community</button>
+                        <button class="btn-secondary" id="tryAssistantBtn">Try AI Assistant</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-pets">
+                        <div class="pet-icon dog"><i class="fas fa-dog"></i></div>
+                        <div class="pet-icon cat"><i class="fas fa-cat"></i></div>
+                        <div class="pet-icon fish"><i class="fas fa-fish"></i></div>
+                        <div class="pet-icon bird"><i class="fas fa-dove"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2 class="section-title">Why PawSquare?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Community Feed</h3>
+                        <p>Share photos, stories, and questions with pet parents who understand.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Pet Assistant</h3>
+                        <p>Get instant answers to your pet care questions with our AI-powered assistant.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Health Tips</h3>
+                        <p>Personalized health and wellness suggestions for your furry friends.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Event Calendar</h3>
+                        <p>Find local pet-friendly events and meetups in your area.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Feed Section -->
+        <section id="community" class="page-section">
+            <div class="community-header">
+                <h2 class="section-title">Community Feed</h2>
+                <p class="section-subtitle">Connect with fellow pet parents</p>
+            </div>
+            
+            <div class="community-container">
+                <div class="create-post-card">
+                    <div class="post-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>You</h4>
+                            <p>Share something with the community...</p>
+                        </div>
+                    </div>
+                    <div class="post-form">
+                        <textarea id="postContent" placeholder="What's on your mind? Ask a question, share a story, or post a photo description..."></textarea>
+                        <div class="post-actions">
+                            <div class="post-options">
+                                <button class="post-option-btn" data-type="photo"><i class="fas fa-camera"></i> Photo</button>
+                                <button class="post-option-btn" data-type="question"><i class="fas fa-question-circle"></i> Question</button>
+                                <button class="post-option-btn" data-type="story"><i class="fas fa-book"></i> Story</button>
+                            </div>
+                            <button id="submitPost" class="btn-primary">Post to Community</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed-filter">
+                    <button class="filter-btn active" data-filter="all">All Posts</button>
+                    <button class="filter-btn" data-filter="question">Questions</button>
+                    <button class="filter-btn" data-filter="photo">Photos</button>
+                    <button class="filter-btn" data-filter="story">Stories</button>
+                </div>
+
+                <div id="communityFeed" class="community-feed">
+                    <!-- Posts will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section id="assistant" class="page-section">
+            <div class="assistant-header">
+                <h2 class="section-title">AI Pet Assistant</h2>
+                <p class="section-subtitle">Get personalized pet care advice powered by AI</p>
+            </div>
+            
+            <div class="assistant-container">
+                <div class="assistant-info">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-intro">
+                        <h3>Hi, I'm Paws AI!</h3>
+                        <p>I'm here to help with pet care questions, behavior tips, health advice, and more. Try asking me anything about your pet!</p>
+                    </div>
+                </div>
+
+                <div class="assistant-demo">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <div class="chat-title">
+                                <i class="fas fa-comments"></i>
+                                <span>AI Assistant Chat</span>
+                            </div>
+                            <div class="chat-status">
+                                <div class="status-indicator"></div>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message ai-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>Hello! I'm Paws AI, your virtual pet care assistant. How can I help you and your furry friend today?</p>
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message user-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>My dog seems anxious during thunderstorms. Any suggestions?</p>
+                                    <div class="message-time">2 min ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message ai-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>Many dogs experience storm anxiety. Here are some suggestions:<br>
+                                    1. Create a safe space like a crate or quiet room<br>
+                                    2. Try calming supplements or pheromone diffusers<br>
+                                    3. Play white noise or calming music<br>
+                                    4. Consider a thunder jacket for gentle pressure<br>
+                                    5. Consult your vet for severe cases</p>
+                                    <div class="message-time">1 min ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-questions">
+                            <p>Try asking:</p>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" data-question="Best food for senior cats">Best food for senior cats</button>
+                                <button class="quick-btn" data-question="How to train a puppy">How to train a puppy</button>
+                                <button class="quick-btn" data-question="Pet grooming tips">Pet grooming tips</button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Type your pet care question here...">
+                            <button id="sendMessage" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-features">
+                        <div class="ai-feature-card">
+                            <div class="ai-feature-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h4>Health Advisor</h4>
+                            <p>Get symptom analysis and when to see a vet.</p>
+                        </div>
+                        <div class="ai-feature-card">
+                            <div class="ai-feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Training Tips</h4>
+                            <p>Behavior solutions tailored to your pet.</p>
+                        </div>
+                        <div class="ai-feature-card">
+                            <div class="ai-feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h4>Nutrition Guide</h4>
+                            <p>Personalized diet recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="page-section">
+            <div class="profile-header">
+                <h2 class="section-title">My Profile</h2>
+                <p class="section-subtitle">Manage your pet parent account</p>
+            </div>
+            
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Alex Morgan</h3>
+                            <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Seattle, WA</p>
+                            <p class="profile-member">Member since 2022</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <h4>24</h4>
+                                <p>Posts</p>
+                            </div>
+                            <div class="stat">
+                                <h4>127</h4>
+                                <p>Connections</p>
+                            </div>
+                            <div class="stat">
+                                <h4>42</h4>
+                                <p>Helped</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="my-pets">
+                        <h3>My Pets</h3>
+                        <div class="pets-list">
+                            <div class="pet-card">
+                                <div class="pet-avatar dog">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <div class="pet-info">
+                                    <h4>Max</h4>
+                                    <p>Golden Retriever • 4 years</p>
+                                </div>
+                            </div>
+                            <div class="pet-card">
+                                <div class="pet-avatar cat">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <div class="pet-info">
+                                    <h4>Luna</h4>
+                                    <p>Siamese Cat • 2 years</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-secondary" id="addPetBtn">
+                            <i class="fas fa-plus"></i> Add Pet
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>You asked about <strong>dog anxiety solutions</strong> in the community</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>You liked <strong>Sarah's post</strong> about cat grooming</p>
+                                    <span class="activity-time">1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>You used AI Assistant for <strong>pet nutrition advice</strong></p>
+                                    <span class="activity-time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>AI Suggestions for You</h3>
+                        <div class="suggestions">
+                            <div class="suggestion-card">
+                                <div class="suggestion-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div class="suggestion-content">
+                                    <h4>Vet Checkup Reminder</h4>
+                                    <p>Max is due for his annual checkup next month</p>
+                                </div>
+                            </div>
+                            <div class="suggestion-card">
+                                <div class="suggestion-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="suggestion-content">
+                                    <h4>Food Restock</h4>
+                                    <p>Based on usage, you'll need more dog food in 5 days</p>
+                                </div>
+                            </div>
+                            <div class="suggestion-card">
+                                <div class="suggestion-icon">
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <div class="suggestion-content">
+                                    <h4>Local Event</h4>
+                                    <p>Dog park social this Saturday in your area</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>PawSquare</span>
+                </div>
+                <p>Connecting pet parents everywhere</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#community">Community</a>
+                <a href="#assistant">AI Assistant</a>
+                <a href="#profile">Profile</a>
+            </div>
+            <div class="footer-social">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-tiktok"></i>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2023 PawSquare. All rights reserved. | A Digital Town Square for Pet Parents</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
